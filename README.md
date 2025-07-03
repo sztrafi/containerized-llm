@@ -1,2 +1,2 @@
 # containerized-llm
-Containerized LLM / Cognitive Service Workflow on Azure project.
+Containerized LLM & Cognitive Service Workflow on Azure project.
