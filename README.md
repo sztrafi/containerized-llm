@@ -1,15 +1,16 @@
-# containerized-llm
-Containerized LLM & Cognitive Service Workflow on Azure project.
-
-
 # Azure AI API Gateway
 
-Lightweight API gateway exposing Azure OpenAI and Cognitive Services functionality via containerized FastAPI app.
+Lightweight containerized FastAPI app exposing **Azure AI Services (Text Analytics)** and **Azure OpenAI (Chat LLM)** through simple REST endpoints.
 
 ## Features
-- `/llm` - Call Azure OpenAI GPT endpoint
-- `/cognitive` - Call Azure Cognitive Service Sentiment Analysis
+- `/sentiment?text=I love this project!` → sentiment analysis
+- `/language?text=Das ist ein Test` → language detection
+- `/llm?prompt=Write a haiku about clouds` → LLM response from Azure OpenAI
 
-## Deployment
-Provision infra with Terraform, containerize app with Docker, deploy to Azure.
-
+## Project Stack
+- **FastAPI** for API Gateway
+- **Azure AI Services (Text Analytics)** for classical AI
+- **Azure OpenAI** for LLM
+- **Terraform** to provision Azure resources
+- **Docker** for containerization
+- **GitHub Actions** for CI/CD
