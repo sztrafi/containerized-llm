@@ -24,12 +24,12 @@ def get_azure_services():
         return None
 
 def main():
-    st.title("🤖 AI Document Processing Demo")
+    st.title(" AI Document Processing Demo")
     st.markdown("Upload a document to extract text and generate AI insights")
     
     # Sidebar for info
     with st.sidebar:
-        st.header("📋 About")
+        st.header("About")
         st.info(
             "This demo showcases:\n"
             "- Azure Document Intelligence\n"
@@ -38,7 +38,7 @@ def main():
             "- Infrastructure as Code"
         )
         
-        st.header("🔧 Tech Stack")
+        st.header("Tech Stack")
         st.code(
             "• Python + Streamlit\n"
             "• Azure AI Services\n"
@@ -66,7 +66,7 @@ def main():
         col1, col2 = st.columns(2)
         
         with col1:
-            st.subheader("📄 Document Analysis")
+            st.subheader("Document Analysis")
             
             with st.spinner("Analyzing document..."):
                 try:
@@ -89,7 +89,7 @@ def main():
                     st.error(f"Analysis failed: {str(e)}")
         
         with col2:
-            st.subheader("🧠 AI Insights")
+            st.subheader("AI Insights")
             
             if hasattr(st.session_state, 'document_content') and st.session_state.document_content:
                 with st.spinner("Generating AI insights..."):
@@ -108,7 +108,7 @@ def main():
     st.markdown("---")
     st.markdown(
         "<div style='text-align: center; color: gray;'>"
-        "Built with Azure AI Services, Streamlit, and ❤️"
+        "Built with Azure AI Services, Streamlit "
         "</div>",
         unsafe_allow_html=True
     )
