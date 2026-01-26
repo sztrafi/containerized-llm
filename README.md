@@ -5,7 +5,8 @@
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python)](api/)
 [![Azure](https://img.shields.io/badge/Cloud-Azure-0078D4?logo=microsoftazure)](https://azure.microsoft.com)
 
-A project for processing documents, using cloud services, Terraform, and DevOps practices.
+A project for processing documents, using cloud services (Azure), Terraform, and DevOps practices.
+The AI services can be replaced with local/another cloud provider endpoints. 
 
 > **Note**: This project showcases infrastructure design and DevOps practices. Azure subscription required for full deployment. Local demo available without Azure.
 
@@ -197,6 +198,16 @@ docker build -t llm-app:local .
 # Run container
 docker run -p 8501:8501 llm-app:local
 ```
+
+## To do:
+
+- Add automated testing in CI/CD pipeline (github)
+
+## Possible Future Enhancements
+
+- Add Azure Key Vault for secret management
+- Implement Application Insights for monitoring (Azure)
+
 
 ## Contact
 
