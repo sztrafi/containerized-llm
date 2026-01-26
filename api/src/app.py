@@ -31,7 +31,7 @@ def main():
         )
         
         st.header("Status")
-        st.warning("LOCAL MODE - Using mock data\n\n(Azure integration in Step 4)")
+        st.warning("LOCAL MODE - Using mock data\n\n")
     
     # File upload
     uploaded_file = st.file_uploader(
@@ -67,7 +67,7 @@ def main():
                 }
                 
                 st.json(mock_analysis)
-                st.info("Note: This is mock data. Connect to Azure in Step 4.")
+                st.info("Note: This is mock data.")
         
         with col2:
             st.subheader("AI Insights")
@@ -91,11 +91,6 @@ def main():
                 **Notes**
                 
                 Currently running in local mock mode without Azure services
-                
-                **Next Steps**
-                1. Complete Terraform setup (Step 3)
-                2. Deploy Azure resources
-                3. Connect application to Azure (Step 4)
                 """
                 
                 st.markdown(mock_insights)
@@ -112,14 +107,6 @@ def main():
         2. Extract text and structure with Azure Document Intelligence
         3. Analyze with Azure OpenAI for insights
         4. View results in this interface
-        
-        **Current Progress**
-        
-        - Step 1: Local app structure (CURRENT)
-        - Step 2: Add helper files
-        - Step 3: Terraform setup
-        - Step 4: Azure integration
-        - Step 5: GitHub Actions
         """)
     
     # Footer

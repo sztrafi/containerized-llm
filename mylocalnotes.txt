@@ -1,0 +1,60 @@
+#Prerequisites to run locally on Mac
+
+#Install Terraform on your machine:
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
+
+#Install Azure CLI (az).
+brew update && brew install azure-cli
+
+
+#Main Idea:
+#1.Use Terraform for infra (RG, ACR, Container App, Cognitive Services).
+#2.Use Azure Portal → AI Foundry to create Hub + Project + OpenAI deployment (GPT-35 or GPT-4).
+#3.Then inject the endpoint + keys into .env (or via Terraform outputs).
+
+
+#Instructions:
+#1.1. Authenticate with Azure:
+
+az login
+az account list --output table
+az account set --subscription "<your-subscription-id>"
+
+#Container Apps require the Microsoft.App provider, and by default subscription does not have it
+az provider register --namespace Microsoft.App
+
+
+#1.2. Terraform:
+
+cd terraform
+terraform init
+
+terraform apply -auto-approve
+
+#1.3. Assign AcrPull (system account) that the app can pull the docker image from ACR using the managed identity 
+
+az containerapp show \                                                                         
+  --name aiapigateway \
+  --resource-group ai-api-rg \
+  --query identity.principalId -o tsv
+
+az role assignment create \
+  --assignee <principal-id> \
+  --role AcrPull \
+  --scope /subscriptions/<sub-id>/resourceGroups/ai-api-rg/providers/Microsoft.ContainerRegistry/registries/aiapigatewayacr
+
+#1.4. Now we have:
+Resource group, an ACR, a Container App environment, and a Text Analytics resource ready.
+
+
+#2.1. Create Project and deploy the Model in Azure AI Foundry
+#2.2. Get the endpoints and keys of Azure AI Services and Azure OpenAI to .env or terraform outputs
+#2.3. Login to ACR, build and push the container image
+
+az acr update -n aiapigatewayacr --admin-enabled true
+az acr credential show -n aiapigatewayacr
+docker login aiapigatewayacr.azurecr.io -u aiapigatewayacr -p <password>
+docker build -t aiapigatewayacr.azurecr.io/ai-api:latest ./api
+docker push aiapigatewayacr.azurecr.io/ai-api:latest
+
