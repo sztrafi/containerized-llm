@@ -157,9 +157,9 @@ st.markdown("Upload a document for automated text extraction and AI-powered anal
 with st.sidebar:
     st.header("Mode")
     if AZURE_MODE:
-        st.success("🟢 Azure mode — live AI services")
+        st.success("Azure mode — live AI services")
     else:
-        st.warning("🟡 Local mock mode\n\nSet env vars to enable Azure.")
+        st.warning("Local mock mode\n\nSet env vars to enable Azure.")
 
     st.header("Tech Stack")
     st.code(
@@ -190,7 +190,7 @@ if uploaded_file is not None:
 
     # ---- Document Analysis ------------------------------------------------
     with col1:
-        st.subheader("📋 Document Analysis")
+        st.subheader("Document Analysis")
 
         with st.spinner("Extracting text…"):
             if AZURE_MODE:
@@ -214,7 +214,7 @@ if uploaded_file is not None:
 
     # ---- AI Insights -------------------------------------------------------
     with col2:
-        st.subheader("🤖 AI Insights")
+        st.subheader("AI Insights")
 
         with st.spinner("Generating insights…"):
             if AZURE_MODE:
