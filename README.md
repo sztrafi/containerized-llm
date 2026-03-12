@@ -46,8 +46,8 @@ The AI services can be replaced with local/another cloud provider endpoints.
 
 ```bash
 # Clone repository
-git clone https://github.com/sztrafi/containerized-llm.git
-cd containerized-llm
+git clone https://github.com/sztrafi/azure-openai-document-pipeline
+cd azure-openai-document-pipeline
 
 # Start application
 docker-compose up --build
@@ -165,7 +165,7 @@ AZURE_OPENAI_KEY=<your-key>
 ## Project Structure
 
 ```
-containerized-llm/
+azure-openai-document-pipeline/
 ├── api/
 │   ├── src/
 │   │   └── app.py              # Streamlit application
